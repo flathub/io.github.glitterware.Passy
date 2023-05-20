@@ -18,7 +18,7 @@ modules:
   sources:
   - type: archive
     url: https://github.com/GlitterWare/Passy-Releases/blob/v1.5.0/Passy-v1.5.0-Linux-Bundle-No-Updates-Popup.zip?raw=true
-    sha256: 6f36c47e772e5c23989c8b4a1103f51cc623b693e881f2cc851cddd1090d8f23
+    sha256: 5dbfaabe9c30f6a16019840272d5280867aaa6505aa8009a8ff46f09597c7d15
     archive-type: zip
     dest: bundle
   build-commands:
