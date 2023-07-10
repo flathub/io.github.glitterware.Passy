@@ -12,13 +12,19 @@ finish-args:
 - '--socket=pulseaudio'
 - '--share=network'
 - '--filesystem=xdg-documents'
+- '--filesystem=~/Documents'
+- '--filesystem=~/.mozilla/native-messaging-hosts'
+- '--filesystem=~/.config/microsoft-edge/NativeMessagingHosts'
+- '--filesystem=~/.config/google-chrome/NativeMessagingHosts'
+- '--filesystem=~/.config/chromium/NativeMessagingHosts'
+- '--filesystem=~/.config/BraveSoftware/Brave-Browser/NativeMessagingHosts'
 modules:
 - name: passy
   buildsystem: simple
   sources:
   - type: archive
-    url: https://github.com/GlitterWare/Passy-Releases/blob/v1.5.0/Passy-v1.5.0-Linux-Bundle-No-Updates-Popup.zip?raw=true
-    sha256: 5dbfaabe9c30f6a16019840272d5280867aaa6505aa8009a8ff46f09597c7d15
+    url: https://github.com/GlitterWare/Passy-Releases/blob/v1.5.1/Passy-v1.5.1-Linux-Bundle-No-Updates-Popup.zip?raw=true
+    sha256: fbc294a268bb35acb62b30a6717fd271f720d0e5394d625ad70970fba5d6f2bd
     archive-type: zip
     dest: bundle
   build-commands:
