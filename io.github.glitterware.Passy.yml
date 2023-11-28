@@ -11,14 +11,14 @@ finish-args:
 - '--device=dri'
 - '--socket=pulseaudio'
 - '--share=network'
-- '--filesystem=xdg-documents/Passy'
+- '--filesystem=xdg-documents/Passy:create'
 - '--filesystem=~/Documents/Passy'
-- '--filesystem=~/Passy'
-- '--filesystem=~/.mozilla/native-messaging-hosts'
-- '--filesystem=~/.config/microsoft-edge/NativeMessagingHosts'
-- '--filesystem=~/.config/google-chrome/NativeMessagingHosts'
-- '--filesystem=~/.config/chromium/NativeMessagingHosts'
-- '--filesystem=~/.config/BraveSoftware/Brave-Browser/NativeMessagingHosts'
+- '--filesystem=~/Passy:create'
+- '--filesystem=~/.mozilla/native-messaging-hosts:create'
+- '--filesystem=~/.config/microsoft-edge/NativeMessagingHosts:create'
+- '--filesystem=~/.config/google-chrome/NativeMessagingHosts:create'
+- '--filesystem=~/.config/chromium/NativeMessagingHosts:create'
+- '--filesystem=~/.config/BraveSoftware/Brave-Browser/NativeMessagingHosts:create'
 modules:
 - name: passy
   buildsystem: simple
