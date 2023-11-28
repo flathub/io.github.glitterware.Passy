@@ -11,8 +11,9 @@ finish-args:
 - '--device=dri'
 - '--socket=pulseaudio'
 - '--share=network'
-- '--filesystem=xdg-documents'
-- '--filesystem=~/Documents'
+- '--filesystem=xdg-documents/Passy'
+- '--filesystem=~/Documents/Passy'
+- '--filesystem=~/Passy'
 - '--filesystem=~/.mozilla/native-messaging-hosts'
 - '--filesystem=~/.config/microsoft-edge/NativeMessagingHosts'
 - '--filesystem=~/.config/google-chrome/NativeMessagingHosts'
@@ -23,8 +24,8 @@ modules:
   buildsystem: simple
   sources:
   - type: archive
-    url: https://github.com/GlitterWare/Passy-Releases/blob/v1.6.0/Passy-v1.6.0-Linux-Bundle-No-Updates-Popup.zip?raw=true
-    sha256: 51e10cadb8f3efb71820c71ee92c762e7c99daf3fee90442d25a363839b7ae90
+    url: https://github.com/GlitterWare/Passy-Releases/blob/v1.7.0/Passy-v1.7.0-Linux-Bundle-No-Updates-Popup.zip?raw=true
+    sha256: 3bc654d603c8267f735d077bc11450e4b04163707d6f200ce213d461b6a6a19a
     archive-type: zip
     dest: bundle
   build-commands:
