@@ -24,8 +24,8 @@ modules:
   buildsystem: simple
   sources:
   - type: archive
-    url: https://github.com/GlitterWare/Passy-Releases/blob/v1.7.0/Passy-v1.7.0-Linux-Bundle-No-Updates-Popup.zip?raw=true
-    sha256: 98b9651ffe2cb9e68106ab769d425750d09df24a84d4e74b3912c584d5480b75
+    url: https://github.com/GlitterWare/Passy-Releases/blob/v1.8.0/Passy-v1.8.0-Linux-Bundle-No-Updates-Popup.zip?raw=true
+    sha256: f43babc6a7351eb0ea2d596d9fe9f777e90e0c52ee5e17516e78c90b3c67df2a
     archive-type: zip
     dest: bundle
   build-commands:
