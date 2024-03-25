@@ -27,6 +27,13 @@ modules:
     url: https://github.com/GlitterWare/Passy-Releases/blob/v1.8.0/Passy-v1.8.0-Linux-Bundle-No-Updates-Popup.zip?raw=true
     sha256: f43babc6a7351eb0ea2d596d9fe9f777e90e0c52ee5e17516e78c90b3c67df2a
     archive-type: zip
+    only-arches: [ 'x86_64' ]
+    dest: bundle
+  - type: archive
+    url: https://github.com/GlitterWare/Passy-Releases/blob/v1.8.0/Passy-v1.8.0-Linux-ARM64-Bundle-No-Updates-Popup.zip?raw=true
+    sha256: f6681dd0d06bd99d687c432e88bc5de12ece2c2529486d12b45b1aca1c0d7ecf
+    archive-type: zip
+    only-arches: [ 'aarch64' ]
     dest: bundle
   build-commands:
   - mv bundle/com.glitterware.passy.svg bundle/io.github.glitterware.Passy.svg
