@@ -83,12 +83,6 @@ modules:
     - type: git
       url: https://code.videolan.org/videolan/x264.git
       commit: a8b68ebfaa68621b5ac8907610d3335971839d52
-      x-checker-data:
-        type: json
-        url: https://code.videolan.org/api/v4/projects/536/repository/commits
-        commit-query: first( .[].id )
-        version-query: first( .[].id )
-        timestamp-query: first( .[].committed_date )
   - name: nv-codec-headers
     cleanup:
     - '*'
@@ -118,7 +112,6 @@ modules:
     sources:
     - type: git
       url: https://git.ffmpeg.org/ffmpeg.git
-      branch: release/6.0
       commit: b98349b2055a93b2a22381bc1a4c09c229f2b3cb
 #endregion
 
