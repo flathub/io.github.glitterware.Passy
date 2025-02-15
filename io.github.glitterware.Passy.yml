@@ -126,14 +126,14 @@ modules:
   buildsystem: simple
   sources:
   - type: archive
-    url: https://github.com/GlitterWare/Passy-Releases/blob/v1.8.0/Passy-v1.8.0-Linux-Bundle-No-Updates-Popup.zip?raw=true
-    sha256: f43babc6a7351eb0ea2d596d9fe9f777e90e0c52ee5e17516e78c90b3c67df2a
+    url: https://github.com/GlitterWare/Passy-Releases/blob/v1.9.0/Passy-v1.9.0-Linux-Bundle-No-Updates-Popup.zip?raw=true
+    sha256: d07cd871d9e4c6fc6e28c8d62cb5472c304586ee0d5556cbc69dfbbc8f3705ed
     archive-type: zip
     only-arches: [ 'x86_64' ]
     dest: bundle
   - type: archive
-    url: https://github.com/GlitterWare/Passy-Releases/blob/v1.8.0/Passy-v1.8.0-Linux-ARM64-Bundle-No-Updates-Popup.zip?raw=true
-    sha256: f6681dd0d06bd99d687c432e88bc5de12ece2c2529486d12b45b1aca1c0d7ecf
+    url: https://github.com/GlitterWare/Passy-Releases/blob/v1.9.0/Passy-v1.9.0-Linux-ARM64-Bundle-No-Updates-Popup.zip?raw=true
+    sha256: 53a6d1217b1cac5cac370a2e81c9eaccdd9a325af20dd4a74065e2a9d6c7d009
     archive-type: zip
     only-arches: [ 'aarch64' ]
     dest: bundle
