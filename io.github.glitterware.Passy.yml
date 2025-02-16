@@ -19,7 +19,7 @@ finish-args:
 - '--filesystem=~/.config/google-chrome/NativeMessagingHosts:create'
 - '--filesystem=~/.config/chromium/NativeMessagingHosts:create'
 - '--filesystem=~/.config/BraveSoftware/Brave-Browser/NativeMessagingHosts:create'
-- '--env=LD_LIBRARY_PATH="/app/lib"'
+- '--env=LD_LIBRARY_PATH=/app/lib'
 modules:
 #region Required dependencies
 - shared-modules/libayatana-appindicator/libayatana-appindicator-gtk3.json
