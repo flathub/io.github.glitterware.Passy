@@ -19,23 +19,30 @@ finish-args:
 - '--filesystem=~/.config/google-chrome/NativeMessagingHosts:create'
 - '--filesystem=~/.config/chromium/NativeMessagingHosts:create'
 - '--filesystem=~/.config/BraveSoftware/Brave-Browser/NativeMessagingHosts:create'
+- '--talk-name=org.kde.StatusNotifierWatcher'
+- '--env=LD_LIBRARY_PATH=/app/lib'
 modules:
+# Using libayatana-appindicator directly does not work, linking to libappindicator instead
+- shared-modules/libappindicator/libappindicator-gtk3-12.10.json
+- mpv.json
 - name: passy
   buildsystem: simple
   sources:
   - type: archive
-    url: https://github.com/GlitterWare/Passy-Releases/blob/v1.8.0/Passy-v1.8.0-Linux-Bundle-No-Updates-Popup.zip?raw=true
-    sha256: f43babc6a7351eb0ea2d596d9fe9f777e90e0c52ee5e17516e78c90b3c67df2a
+    url: https://github.com/GlitterWare/Passy-Releases/blob/v1.9.0/Passy-v1.9.0-Linux-Bundle-No-Updates-Popup.zip?raw=true
+    sha256: 4483f9cb9a7bcd98fd336f088dcd3087d4f43946a55ef3c08c64d181cfd5d5bf
     archive-type: zip
     only-arches: [ 'x86_64' ]
     dest: bundle
   - type: archive
-    url: https://github.com/GlitterWare/Passy-Releases/blob/v1.8.0/Passy-v1.8.0-Linux-ARM64-Bundle-No-Updates-Popup.zip?raw=true
-    sha256: f6681dd0d06bd99d687c432e88bc5de12ece2c2529486d12b45b1aca1c0d7ecf
+    url: https://github.com/GlitterWare/Passy-Releases/blob/v1.9.0/Passy-v1.9.0-Linux-ARM64-Bundle-No-Updates-Popup.zip?raw=true
+    sha256: 00ae99beb46a4a12ef4e4f3d0479b63d2187bf7bb6602868bea11ec980ac79b9
     archive-type: zip
     only-arches: [ 'aarch64' ]
     dest: bundle
   build-commands:
+  - ln -s /app/lib/libmpv.so /app/lib/libmpv.so.1
+  - ln -s /app/lib/libappindicator3.so /app/lib/libayatana-appindicator3.so.1
   - mv bundle/com.glitterware.passy.svg bundle/io.github.glitterware.Passy.svg
   - sed -i 's/com.glitterware.passy/io.github.glitterware.Passy/' bundle/com.glitterware.passy.appdata.xml
   - mv bundle/com.glitterware.passy.appdata.xml bundle/io.github.glitterware.Passy.metainfo.xml
