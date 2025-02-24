@@ -43,6 +43,8 @@ modules:
   build-commands:
   - ln -s /app/lib/libmpv.so /app/lib/libmpv.so.1
   - ln -s /app/lib/libappindicator3.so /app/lib/libayatana-appindicator3.so.1
+  - ln -s /app/lib/libappindicator3.so /app/lib/libayatana-indicator3.so.7
+  - ln -s /app/lib/libappindicator3.so /app/lib/libayatana-ido3-0.4.so.0
   - mv bundle/com.glitterware.passy.svg bundle/io.github.glitterware.Passy.svg
   - sed -i 's/com.glitterware.passy/io.github.glitterware.Passy/' bundle/com.glitterware.passy.appdata.xml
   - mv bundle/com.glitterware.passy.appdata.xml bundle/io.github.glitterware.Passy.metainfo.xml
