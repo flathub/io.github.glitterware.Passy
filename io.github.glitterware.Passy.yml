@@ -1,0 +1,101 @@
+# Generated from ./flatpak-flutter.yml, do not edit
+# Visit the flatpak-flutter project at https://github.com/TheAppgineer/flatpak-flutter
+app-id: io.github.glitterware.Passy
+runtime: org.freedesktop.Platform
+runtime-version: '24.08'
+sdk: org.freedesktop.Sdk
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.llvm19
+command: passy
+separate-locales: false
+cleanup:
+  - /var/lib
+finish-args:
+  - --share=ipc
+  - --socket=fallback-x11
+  - --socket=wayland
+  - --device=dri
+  - --socket=pulseaudio
+  - --share=network
+  - --filesystem=xdg-documents/Passy:create
+  - --filesystem=~/Documents/Passy
+  - --filesystem=~/Passy:create
+  - --filesystem=~/.mozilla/native-messaging-hosts:create
+  - --filesystem=~/.config/microsoft-edge/NativeMessagingHosts:create
+  - --filesystem=~/.config/google-chrome/NativeMessagingHosts:create
+  - --filesystem=~/.config/chromium/NativeMessagingHosts:create
+  - --filesystem=~/.config/BraveSoftware/Brave-Browser/NativeMessagingHosts:create
+  - --talk-name=org.kde.StatusNotifierWatcher
+  - --env=LD_LIBRARY_PATH=/app/lib
+modules:
+  - shared-modules/libappindicator/libappindicator-gtk3-12.10.json
+  - mpv.json
+  - name: Passy
+    buildsystem: simple
+    build-options:
+      arch:
+        x86_64:
+          env:
+            RELEASE_PATH: build/linux/x64/release
+            BUNDLE_PATH: build/linux/x64/release/bundle
+        aarch64:
+          env:
+            RELEASE_PATH: build/linux/arm64/release
+            BUNDLE_PATH: build/linux/arm64/release/bundle
+      append-path: /usr/lib/sdk/llvm19/bin:/var/lib/flutter/bin
+      prepend-ld-library-path: /usr/lib/sdk/llvm19/lib
+      env:
+        PUB_CACHE: /run/build/Passy/.pub-cache
+    sources:
+      - pubspec-sources.json
+      - type: git
+        url: https://github.com/GlitterWare/Passy
+        commit: 0a24fc64afbe95eacfbd03dde872f4b810988e65
+      - type: file
+        url: https://github.com/microsoft/mimalloc/archive/refs/tags/v2.1.2.tar.gz
+        sha256: 2b1bff6f717f9725c70bf8d79e4786da13de8a270059e4ba0bdd262ae7be46eb
+        only-arches: [ 'x86_64' ]
+        dest: build/linux/x64/release
+        dest-filename: mimalloc-2.1.2.tar.gz
+      - type: file
+        url: https://github.com/microsoft/mimalloc/archive/refs/tags/v2.1.2.tar.gz
+        sha256: 2b1bff6f717f9725c70bf8d79e4786da13de8a270059e4ba0bdd262ae7be46eb
+        only-arches: [ 'aarch64' ]
+        dest: build/linux/arm64/release
+        dest-filename: mimalloc-2.1.2.tar.gz
+      - type: file
+        url: https://github.com/bblanchon/pdfium-binaries/releases/download/chromium%2F6555/pdfium-linux-x64.tgz
+        sha256: 6dc7a7ce3504c88afe913d92585dbea93ab89ffc60d89cae7fdda7574fb9f1a2
+        only-arches: [ 'x86_64' ]
+        dest-filename: pdfium-linux.tgz
+        dest: build/linux/x64/release/pdfium/chromium%2F6555
+      - type: file
+        url: https://github.com/bblanchon/pdfium-binaries/releases/download/chromium%2F6555/pdfium-linux-arm64.tgz
+        sha256: c930f8039def55a3d06b536dcca11ca113fa465ea1077416ffab29744396c7c2
+        only-arches: [ 'aarch64' ]
+        dest-filename: pdfium-linux.tgz
+        dest: build/linux/arm64/release/pdfium/chromium%2F6555
+    build-commands:
+      - setup-flutter.sh -C .
+      - tar -xf $RELEASE_PATH/pdfium/chromium%2F6555/pdfium-linux.tgz -C $RELEASE_PATH/pdfium/chromium%2F6555
+      - flutter build linux --no-version-check --suppress-analytics --release --dart-define=UPDATES_POPUP_ENABLED=false
+      - mv $BUNDLE_PATH bundle
+      - ln -s /app/lib/libmpv.so /app/lib/libmpv.so.1
+      - ln -s /app/lib/libappindicator3.so /app/lib/libayatana-appindicator3.so.1
+      - ln -s /app/lib/libappindicator3.so /app/lib/libayatana-indicator3.so.7
+      - ln -s /app/lib/libappindicator3.so /app/lib/libayatana-ido3-0.4.so.0
+      - mv bundle/com.glitterware.passy.svg bundle/io.github.glitterware.Passy.svg
+      - sed -i 's/com.glitterware.passy/io.github.glitterware.Passy/' bundle/com.glitterware.passy.appdata.xml
+      - mv bundle/com.glitterware.passy.appdata.xml bundle/io.github.glitterware.Passy.metainfo.xml
+      - sed -i 's/com.glitterware.passy/io.github.glitterware.Passy/' bundle/com.glitterware.passy.desktop
+      - mv bundle/com.glitterware.passy.desktop bundle/io.github.glitterware.Passy.desktop
+      - mkdir -p /app/Passy
+      - cp -r bundle/* /app/Passy
+      - chmod +x /app/Passy/passy
+      - mkdir -p /app/bin
+      - ln -s /app/Passy/passy /app/bin/passy
+      - install -Dm644 bundle/io.github.glitterware.Passy.svg -t /app/share/icons/hicolor/scalable/apps
+      - install -Dm644 bundle/io.github.glitterware.Passy.metainfo.xml -t /app/share/metainfo
+      - install -Dm644 bundle/io.github.glitterware.Passy.desktop -t /app/share/applications
+    modules:
+      - flutter-sdk-3.22.3.json
