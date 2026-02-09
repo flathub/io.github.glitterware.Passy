@@ -33,6 +33,10 @@ modules:
 # Using libayatana-appindicator directly does not work, linking to libappindicator instead
 - shared-modules/libappindicator/libappindicator-gtk3-12.10.json
 - mpv.json
+- name: compat
+  buildsystem: simple
+  build-commands:
+    - mkdir -p /app/lib/ffmpeg
 - name: Passy
   buildsystem: simple
   build-options:
