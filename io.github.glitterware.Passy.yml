@@ -6,6 +6,13 @@ runtime-version: '24.08'
 sdk: org.freedesktop.Sdk
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.llvm19
+inherit-extensions:
+  - org.freedesktop.Platform.GL32
+add-extensions:
+  org.freedesktop.Platform.ffmpeg-full:
+    version: '24.08',
+    directory: lib/ffmpeg,
+    add-ld-path: .
 command: passy
 separate-locales: false
 cleanup:
