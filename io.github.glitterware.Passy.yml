@@ -35,6 +35,10 @@ finish-args:
 modules:
   - shared-modules/libappindicator/libappindicator-gtk3-12.10.json
   - mpv.json
+  - name: compat
+    buildsystem: simple
+    build-commands:
+      - mkdir -p /app/lib/ffmpeg
   - name: Passy
     buildsystem: simple
     build-options:
