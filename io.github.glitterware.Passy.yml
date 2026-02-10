@@ -58,7 +58,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/GlitterWare/Passy
-        commit: b6cd75b9b0cf262f42570f4a4cfe231139373506
+        commit: f175d91e73e03a06c8ad2d6337f08064fc8fd3a1
       - type: file
         url: https://github.com/microsoft/mimalloc/archive/refs/tags/v2.1.2.tar.gz
         sha256: 2b1bff6f717f9725c70bf8d79e4786da13de8a270059e4ba0bdd262ae7be46eb
