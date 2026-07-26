@@ -81,16 +81,16 @@ modules:
     sha256: e737634cca16ba28b760077b915b469bea076b71f208769c56fb96ee138e876f
     only-arches: [ 'x86_64' ]
     dest-filename: pdfium-linux.tgz
-    dest: build/linux/x64/release/pdfium/chromium%2F7520
+    dest: build/linux/x64/release/pdfium/chromium%2F7202
   - type: file
     url: https://github.com/bblanchon/pdfium-binaries/releases/download/chromium%2F7520/pdfium-linux-arm64.tgz
     sha256: ee3998f311195bf9cecb3936b2ce3dd621e873277c36f1ca05de36f2646c07d4
     only-arches: [ 'aarch64' ]
     dest-filename: pdfium-linux.tgz
-    dest: build/linux/arm64/release/pdfium/chromium%2F7520
+    dest: build/linux/arm64/release/pdfium/chromium%2F7202
   #endregion
   build-commands:
-  - tar -xf $RELEASE_PATH/pdfium/chromium%2F7520/pdfium-linux.tgz -C $RELEASE_PATH/pdfium/chromium%2F7520
+  - tar -xf $RELEASE_PATH/pdfium/chromium%2F7202/pdfium-linux.tgz -C $RELEASE_PATH/pdfium/chromium%2F7202
   - flutter build linux --no-pub --no-version-check --suppress-analytics --release --dart-define=UPDATES_POPUP_ENABLED=false
   - mv $BUNDLE_PATH bundle
   - ln -s /app/lib/libmpv.so /app/lib/libmpv.so.1
