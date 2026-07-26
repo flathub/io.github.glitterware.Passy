@@ -56,7 +56,7 @@ modules:
   sources:
   - type: git
     url: https://github.com/GlitterWare/Passy
-    commit: cb2c41e600b825b4c127497d27aa509c0df8be3a
+    commit: e4e8fc82ab1826794987a0037155c0e13c024b58
   - type: git
     url: https://github.com/flutter/flutter
     tag: 3.38.0
