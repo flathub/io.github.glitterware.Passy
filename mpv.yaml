@@ -1,0 +1,101 @@
+# Based on: https://github.com/flathub/org.kde.haruna/blob/978b14826484a85d8e769e10f0eb1e6d6f7cc65e/org.kde.haruna.yml#L76
+name: libmpv
+buildsystem: meson
+config-opts:
+  - -Dlibmpv=true
+  - -Dlua=enabled
+  - -Ddebug=false
+  - -Dbuild-date=false
+  - -Dalsa=disabled
+  - -Dmanpage-build=disabled
+cleanup:
+  - /share/bash-completion
+  - /share/fish
+  - /share/zsh
+  - /share/doc
+  - /share/icons
+  - /share/applications
+sources:
+  - type: archive
+    url: https://github.com/mpv-player/mpv/archive/refs/tags/v0.42.0.tar.gz
+    sha256: bcfebbfa2b65a6d88dc97ea18117831072373e38b5785a2afb874ed4df5070dd
+    x-checker-data:
+      type: anitya
+      project-id: 5348
+      stable-only: true
+      url-template: https://github.com/mpv-player/mpv/archive/refs/tags/v$version.tar.gz
+modules:
+  - name: luajit
+    no-autogen: true
+    make-args:
+      - BUILDMODE=dynamic
+      - PREFIX=${FLATPAK_DEST}
+    make-install-args:
+      - PREFIX=${FLATPAK_DEST}
+    cleanup:
+      - /bin
+    sources:
+      - type: git
+        url: https://github.com/openresty/luajit2.git
+        tag: v2.1-20261107
+        commit: a9381a0912c2423a51fb1986d2d6f19ca9e8daed
+        x-checker-data:
+          type: git
+          tag-pattern: ^v([\d.-]+)$
+          stable-only: false
+
+  - name: libplacebo
+    buildsystem: meson
+    config-opts:
+      - -Ddemos=false
+    sources:
+      - type: git
+        url: https://github.com/haasn/libplacebo.git
+        tag: v7.387.0
+        commit: 275f7dea27924cdd34ab2e6c20e448b6bc4fab65
+        x-checker-data:
+          type: git
+          tag-pattern: ^v([\d.]+)$
+
+  - name: libXpresent
+    buildsystem: autotools
+    sources:
+      - type: archive
+        url: https://xorg.freedesktop.org/archive/individual/lib/libXpresent-1.0.2.tar.xz
+        sha256: 4e5b21b4812206a4b223013606ae31170502c1043038777a1ef8f70c09d37602
+        x-checker-data:
+          type: anitya
+          project-id: 17166
+          stable-only: true
+          url-template: https://xorg.freedesktop.org/archive/individual/lib/libXpresent-$version.tar.xz
+
+  - name: libass
+    config-opts:
+      - --disable-static
+    sources:
+      - type: archive
+        url: https://github.com/libass/libass/releases/download/0.17.5/libass-0.17.5.tar.gz
+        sha256: caab4b993dd7be6187c55623b789ed75dddefea6e65938af134637c732fe094a
+        x-checker-data:
+          type: anitya
+          project-id: 1560
+          stable-only: true
+          url-template: https://github.com/libass/libass/releases/download/$version/libass-$version.tar.gz
+
+  - name: uchardet
+    buildsystem: cmake-ninja
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DBUILD_STATIC=0
+      - -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+    cleanup:
+      - /bin
+    sources:
+      - type: archive
+        url: https://www.freedesktop.org/software/uchardet/releases/uchardet-0.0.8.tar.xz
+        sha256: e97a60cfc00a1c147a674b097bb1422abd9fa78a2d9ce3f3fdcc2e78a34ac5f0
+        x-checker-data:
+          type: anitya
+          project-id: 9265
+          stable-only: true
+          url-template: https://www.freedesktop.org/software/uchardet/releases/uchardet-$version.tar.xz
